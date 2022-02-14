@@ -1,5 +1,5 @@
 """
-WSGI config for rare_API_Joshua_Tree project.
+WSGI config for rareapi project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rare_API_Joshua_Tree.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rare.settings')
 
 application = get_wsgi_application()

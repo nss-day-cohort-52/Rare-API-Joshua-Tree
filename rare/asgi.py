@@ -1,5 +1,5 @@
 """
-ASGI config for rare_API_Joshua_Tree project.
+ASGI config for rareapi project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rare_API_Joshua_Tree.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rare.settings')
 
 application = get_asgi_application()
