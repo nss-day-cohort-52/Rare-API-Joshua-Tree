@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rare_API_Joshua_Tree.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rareapi.settings')
 
 application = get_asgi_application()

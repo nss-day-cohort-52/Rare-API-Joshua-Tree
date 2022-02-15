@@ -1,3 +1,10 @@
+from django.contrib import admin
+from django.conf.urls import include
+from django.urls import path
+from rareapi.views import register_user, login_user
+from rest_framework import routers
+
+
 """rare_API_Joshua_Tree URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -16,6 +23,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+
+router = routers.DefaultRouter(trailing_slash=False)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('register', register_user),
+    path('login', login_user),
+    path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
+    path('admin/', admin.site.urls),
+    path('', include(router.urls)),
 ]
+

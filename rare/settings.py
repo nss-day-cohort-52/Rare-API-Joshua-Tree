@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'rare_API_Joshua_Tree_api',
+    'rareapi',
 ]
 
 REST_FRAMEWORK = {
@@ -67,7 +67,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'rare_API_Joshua_Tree.urls'
+ROOT_URLCONF = 'rare.urls'
 
 TEMPLATES = [
     {
@@ -85,7 +85,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'rare_API_Joshua_Tree.wsgi.application'
+WSGI_APPLICATION = 'rare.wsgi.application'
 
 
 # Database
