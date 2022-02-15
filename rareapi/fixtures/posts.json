@@ -1,0 +1,15 @@
+[
+    {
+        "model": "rareapi.post",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "category": 1,
+            "title": "First post",
+            "publication_date": "2022-02-15",
+            "image_url": "https://cms.qz.com/wp-content/uploads/2018/07/meme-featured.jpg?quality=75&strip=all&w=900&h=900&crop=1",
+            "content": "First post yo",
+            "approved": true
+        }
+    }
+]
