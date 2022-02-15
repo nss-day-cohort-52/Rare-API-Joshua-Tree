@@ -4,9 +4,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-
-
-from rareapi.model.user import rareUser 
+from rareapi.model import RareUser
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -27,7 +25,8 @@ def login_user(request):
         token = Token.objects.get(user=authenticated_user)
         data = {
             'valid': True,
-            'token': token.key
+            'token': token.key,
+            'userId': authenticated_user.id
         }
         return Response(data)
     else:
@@ -52,15 +51,15 @@ def register_user(request):
         last_name=request.data['last_name']
     )
 
-    # Now save the extra info in the levelupapi_gamer table
-    user = rareUser.objects.create(
+    rare_user = RareUser.objects.create(
         bio=request.data['bio'],
+        # profile_image_url=request.data['profile_image_url'],
         user=new_user,
-        created_on=request.data["created_on"]
+        active=new_user.is_active
     )
 
     # Use the REST Framework's token generator on the new user account
-    token = Token.objects.create(user=user.user)
+    token = Token.objects.create(user=rare_user.user)
     # Return the token to the client
-    data = { 'token': token.key }
+    data = { 'token': token.key, 'userId': rare_user.user.id}
     return Response(data)
