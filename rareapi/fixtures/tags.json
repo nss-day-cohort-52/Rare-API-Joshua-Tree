@@ -1,0 +1,36 @@
+[
+    {
+        "model": "rareapi.tags",
+        "pk": 1,
+        "fields": {
+          "label": "JavaScript"
+
+
+        }
+    },
+    {
+        "model": "rareapi.tags",
+        "pk": 2,
+        "fields": {
+           "label": "CSS"
+
+        }
+    },
+     {
+        "model": "rareapi.tags",
+        "pk": 3,
+        "fields": {
+          "label": "REACT"
+
+
+        }
+    },
+    {
+        "model": "rareapi.tags",
+        "pk": 4,
+        "fields": {
+           "label": "PYTHON"
+
+        }
+    }
+]
