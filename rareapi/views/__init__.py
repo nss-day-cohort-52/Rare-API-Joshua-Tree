@@ -1,2 +1,3 @@
 from .auth import register_user, login_user
-from .tag import TagsView
+from .post import PostView
+
