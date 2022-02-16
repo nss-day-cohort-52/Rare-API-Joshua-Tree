@@ -38,10 +38,34 @@ class TagsView(ViewSet):
         tag.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    def create(self, request):
+        """Handle POST operations
+
+        Returns
+         Response -- JSON serialized game instance
+         """
+       
+     
+
+        tag = Tag.objects.create(
+            label=request.data["label"],
+           
+         )
+        serializer = CreateTagSerializer(tag)
+        return Response(serializer.data)
 
 
 
 class TagSerializer(serializers.ModelSerializer):
+    """JSON serializer for game types
+    """
+    class Meta:
+        model = Tag
+        fields = ('id','label')
+        depth = 1
+        
+class CreateTagSerializer(serializers.ModelSerializer):
     """JSON serializer for game types
     """
     class Meta:
