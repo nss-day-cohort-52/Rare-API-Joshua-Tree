@@ -1,0 +1,12 @@
+[
+	{
+		"model": "rareapi.comment",
+		"pk": 1,
+		"fields": {
+			"post": 1,
+			"author": 1,
+			"content": "I''m not sure I understand this post. I have learned a lot about culture from the internet. Thanks to the internet, I make make my own yogurt, cottage cheese, cultured milk, and lot''s of other cultured items!",
+			"created_on": "2022-02-16"
+		}
+	}
+]
