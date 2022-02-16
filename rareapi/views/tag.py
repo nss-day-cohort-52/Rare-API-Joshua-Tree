@@ -4,12 +4,12 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 
-from rareapi.model.tags import Tag
+from rareapi.models.tags import Tag
 
 
 
 
-class TagsView(ViewSet):
+class TagView(ViewSet):
     """Level up game types view"""
 
     def retrieve(self, request, pk):
