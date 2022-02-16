@@ -28,6 +28,20 @@ class CategoryView(ViewSet):
         category = Category.objects.get(pk=pk)
         category.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
+    
+    def create(self, request):
+        """Handle POST operations
+
+        Returns:
+            Response -- JSON serialized game instance
+        """
+        category = Category.objects.create(
+            label=request.data["label"]
+           
+        )
+        serializer = CategoryTypeSerializer(category)
+        return Response(serializer.data)
+    
 
 
 class CategoryTypeSerializer(serializers.ModelSerializer):
