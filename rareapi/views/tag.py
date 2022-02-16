@@ -54,6 +54,18 @@ class TagView(ViewSet):
          )
         serializer = CreateTagSerializer(tag)
         return Response(serializer.data)
+    
+    def update(self, request, pk):
+        """Update Event"""
+        try:
+            tag = Tag.objects.get(pk=pk)
+           
+            serializer = CreateTagSerializer(tag, data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(None, status=status.HTTP_204_NO_CONTENT)
+        except Tag.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
 
 
