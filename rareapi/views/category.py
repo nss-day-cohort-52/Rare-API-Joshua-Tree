@@ -28,6 +28,34 @@ class CategoryView(ViewSet):
         category = Category.objects.get(pk=pk)
         category.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
+    
+    def create(self, request):
+        """Handle POST operations
+
+        Returns:
+            Response -- JSON serialized game instance
+        """
+        category = Category.objects.create(
+            label=request.data["label"]
+           
+        )
+        serializer = CategoryTypeSerializer(category)
+        return Response(serializer.data)
+    
+    
+    def update(self, request, pk):
+        """Handle PUT requests for a game
+
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+
+        category = Category.objects.get(pk=pk)
+        serializer = CategoryTypeSerializer(category, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+    
 
 
 class CategoryTypeSerializer(serializers.ModelSerializer):
