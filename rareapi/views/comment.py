@@ -2,8 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from rareapi.models import Comment
-from rareapi.models import Post
+from rareapi.models import Comment, Post, RareUser
 
 class CommentView(ViewSet):
     """Rare Comments view"""
@@ -20,36 +19,21 @@ class CommentView(ViewSet):
         serializer = CommentSerializer(comment)
         return Response(serializer.data)
     
-#    def create(self, request):
-#        """
-#        Handle POST requests to post a new comment
-#        -- Returns:
-#            Response -- JSON serialized game instance
-#        """
-#        serializer = CreateCommentSerializer(data=request.data)
-#        import pdb; pdb.set_trace()
-#        serializer.is_valid(raise_exception=True)
-#        return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-
     def create(self, request):
-        
-        # retrieve author and post objects from the dbase to make sure they really exist; data retrieved is held in request.data dictionary.
-        author = 
+        """
+        Handle POST requests to post a new comment
+        -- Returns:
+            Response -- JSON serialized game instance
+        """
+        author = RareUser.objects.get(user=request.auth.user)
         post = Post.objects.get(pk=request.data["post"])
-        
-
-        # call "create" ORM (Object Relational Mapping) as pass fields as parameters to the function
         comment = Comment.objects.create(
             content=request.data["content"],
-            author=request.data["author"],
-            post=request.data["post"],
+            author=author,
+            post=post
         )
-
-        # created object is now serialized into dictionary version for json and returned to client
         serializer = CreateCommentSerializer(comment)
-        return Response(serializer.data)
-
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 class CommentSerializer(serializers.ModelSerializer):
     """JSON serializer for Post Comments"""
     
