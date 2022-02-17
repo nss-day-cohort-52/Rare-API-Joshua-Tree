@@ -4,7 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 
-from rareapi.models.tags import Tag
+from rareapi.models.tag import Tag
 
 
 
