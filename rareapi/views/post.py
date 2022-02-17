@@ -1,20 +1,21 @@
-from xml.dom import ValidationErr
+
 from django.forms import ValidationError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.serializers import ModelSerializer
-from rareapi.model import Post, RareUser, Tag 
+from rareapi.model import Post, RareUser, Tag
+from rareapi.model.category import Category 
 
 class PostView(ViewSet):
     
     def create(self, request):
         user = RareUser.objects.get(user=request.auth.user)
-        
+        category = Category.objects.get(pk=request.data["category"])
         
         post = Post.objects.create(
             user = user,
-            category = request.data['category'],
+            category = category,
             title = request.data['title'],
             publication_date = request.data['publication_date'],
             image_url = request.data['image_url'],
