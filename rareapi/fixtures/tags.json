@@ -1,36 +1,30 @@
 [
-    {
-        "model": "rareapi.tag",
-        "pk": 1,
-        "fields": {
-          "label": "JavaScript"
-
-
-        }
-    },
-    {
-        "model": "rareapi.tag",
-        "pk": 2,
-        "fields": {
-           "label": "CSS"
-
-        }
-    },
-     {
-        "model": "rareapi.tag",
-        "pk": 3,
-        "fields": {
-          "label": "REACT"
-
-
-        }
-    },
-    {
-        "model": "rareapi.tag",
-        "pk": 4,
-        "fields": {
-           "label": "PYTHON"
-
-        }
-    }
+	{
+		"model": "rareapi.tag",
+		"pk": 1,
+		"fields": {
+			"label": "JavaScript"
+		}
+	},
+	{
+		"model": "rareapi.tag",
+		"pk": 2,
+		"fields": {
+			"label": "CSS"
+		}
+	},
+	{
+		"model": "rareapi.tag",
+		"pk": 3,
+		"fields": {
+			"label": "REACT"
+		}
+	},
+	{
+		"model": "rareapi.tag",
+		"pk": 4,
+		"fields": {
+			"label": "PYTHON"
+		}
+	}
 ]
