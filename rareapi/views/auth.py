@@ -49,6 +49,7 @@ def register_user(request):
         password=request.data['password'],
         first_name=request.data['first_name'],
         last_name=request.data['last_name']
+       
     )
 
     rare_user = RareUser.objects.create(
