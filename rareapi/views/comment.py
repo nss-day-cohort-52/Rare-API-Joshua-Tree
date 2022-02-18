@@ -10,6 +10,11 @@ class CommentView(ViewSet):
     def list(self, request):
         """Handle GET requests to get all comments"""
         comments = Comment.objects.all()
+        postId = request.query_params.get('postId', None)
+        
+        if postId is not None:
+            comments = comments.filter(post_id=postId)
+        
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
     
@@ -26,11 +31,12 @@ class CommentView(ViewSet):
             Response -- JSON serialized game instance
         """
         author = RareUser.objects.get(user=request.auth.user)
-        post = Post.objects.get(pk=request.data["post"])
+        post = Post.objects.get(pk=request.data["post_id"])
         comment = Comment.objects.create(
+            subject=request.data["subject"],
             content=request.data["content"],
+            post=post,
             author=author,
-            post=post
         )
         serializer = CreateCommentSerializer(comment)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
