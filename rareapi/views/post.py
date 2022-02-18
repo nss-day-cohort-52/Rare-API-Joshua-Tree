@@ -4,8 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.serializers import ModelSerializer
-from rareapi.model import Post, RareUser, Tag
-from rareapi.model.category import Category 
+from rareapi.models import Post, RareUser, Tag, Category
 
 class PostView(ViewSet):
     
@@ -29,7 +28,7 @@ class PostView(ViewSet):
             return Response(serializer.data)
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
-   
+
         
     def list(self, request):
         posts = Post.objects.all()

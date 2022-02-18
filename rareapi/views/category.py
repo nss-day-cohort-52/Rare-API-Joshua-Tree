@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from rareapi.model import Category
+from rareapi.models import Category
 
 
 class CategoryView(ViewSet):
@@ -22,8 +22,6 @@ class CategoryView(ViewSet):
         serializer = CategoryTypeSerializer(category, many=True)
         return Response(serializer.data)
     
-    
-      
     def destroy(self, request, pk):
         category = Category.objects.get(pk=pk)
         category.delete()
@@ -37,7 +35,6 @@ class CategoryView(ViewSet):
         """
         category = Category.objects.create(
             label=request.data["label"]
-           
         )
         serializer = CategoryTypeSerializer(category)
         return Response(serializer.data)
